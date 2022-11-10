@@ -16,7 +16,7 @@ const articleSlice = createSlice({
         getArticle(state, action) {
             return {
                 ...state,
-                article: articles.find((article) => state.article.id 
+                article: state.articles.find((article) => article.id 
                     == action.payload)
             }
         },
