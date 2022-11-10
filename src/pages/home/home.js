@@ -1,22 +1,16 @@
-// Importerar React, komponenter och bilden (Om oss)
-import Quotes from '../../components/quotes/quotes';
+import Quote from '../../components/quotes/quote';
 import Articles from '../../components/articles/articles';
 import Activities from '../../components/activities/activities';
 import Contact from '../../components/contact/contact';
 import about from '../../images/about.png';
-import React from 'react';
 
-// Startsida
 function Home() {
     return (
         <main id="main">
-            {/* Slumpmässigt genererat citat */}
-            <Quotes />
+            <Quote />
             <section className="gray-section">
                 <h1>Välkommen till Mentability!</h1>
-                {/* Nyheter */}
                 <Articles />
-                {/* Om oss */}
                 <section id="about">
                     <h2>Om oss</h2>
                     <div className="row">
@@ -42,14 +36,11 @@ function Home() {
                         </div>
                     </div>
                 </section>
-                {/* Aktiviteter */}
                 <Activities />
-                {/* Kontakt */}
                 <Contact />
             </section>
         </main>
     )
 }
 
-// Exporterar komponenten
 export default Home;

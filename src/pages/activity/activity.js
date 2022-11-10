@@ -1,6 +1,6 @@
 // Importerar React och komponenten som genererar slumpmässiga citat
 import React from 'react';
-import Quotes from '../../components/quotes/quotes';
+import Quote from '../../components/quotes/quote';
 
 // Undersida aktiviteter
 class Activity extends React.Component {
@@ -27,7 +27,7 @@ class Activity extends React.Component {
         return (
             <main className="main-subpage">
                 {/* Slumpmässigt genererat citat */}
-                <Quotes />
+                <Quote />
                 <div className="gray-section">
                     {/* Aktivitet */}
                     <h1>{this.state.title}</h1>
