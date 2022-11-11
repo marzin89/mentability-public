@@ -3,11 +3,18 @@ import { createSlice } from '@reduxjs/toolkit';
 const quoteSlice = createSlice({
     name: 'quote',
     initialState: {
+        quotes: [],
         content: '',
         author: '',
         errorMessage: '',
     },
     reducers: {
+        getQuotes(state, action) {
+            return {
+                ...state,
+                quotes: action.payload,
+            };
+        },
         setRandomQuote(state, action) {
             return {
                 ...state,
