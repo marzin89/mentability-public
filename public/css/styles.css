@@ -440,6 +440,10 @@ p {
     padding: 0;
 }
 
+.hide {
+    display: none;
+}
+
 /* Surfplatta */
 @media only screen and (min-width: 600px) {
     h1 {
@@ -518,10 +522,12 @@ p {
 
     .row {
         display: flex;
+        column-count: 3;
+        flex-wrap: wrap;
     }
 
     .news-article, .activity, .quote {
-        width: 32%;
+        width: 31.9%;
         max-width: 385px;
         margin: 10px 0.7%;
     }
