@@ -5,6 +5,7 @@ const activitySlice = createSlice({
     initialState: {
         activities: [],
         activity: [],
+        numberOfActivities: 3,
     },
     reducers: {
         getActivities(state, action) {
@@ -18,7 +19,29 @@ const activitySlice = createSlice({
                 ...state,
                 activity: state.activities.find((activity) => activity.id
                     == action.payload)
-            },
+            };
+        },
+        setNumberOfActivities(state, action) {
+            switch(action.type) {
+                case 'increment':
+                    if ((state.numberOfActivities + 3) <= state.activities.length) {
+                        return {
+                            ...state,
+                            numberOfActivities: state.numberOfActivities + 3,
+                        };
+                    
+                    } else {
+                        return state;
+                    }
+
+                case 'decrement':
+                    if ((state.numberOfActivities) > 3) {
+                        return {
+                            ...state,
+                            numberOfActivities: state.numberOfActivities - 3,
+                        }
+                    }
+            };
         },
     }
 });

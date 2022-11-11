@@ -22,15 +22,26 @@ const articleSlice = createSlice({
             }
         },
         setNumberOfArticles(state) {
-            if ((state.numberOfArticles + 3) <= state.articles.length) {
-                return {
-                    ...state,
-                    numberOfArticles: state.numberOfArticles += 3,
-                };
-            
-            } else {
-                return state;
-            }
+            switch(action.type) {
+                case 'increment':
+                    if ((state.numberOfArticles + 3) <= state.articles.length) {
+                        return {
+                            ...state,
+                            numberOfArticles: state.numberOfArticles + 3,
+                        };
+                    
+                    } else {
+                        return state;
+                    }
+
+                case 'decrement':
+                    if ((state.numberOfArticles) > 3) {
+                        return {
+                            ...state,
+                            numberOfArticles: state.numberOfArticles - 3,
+                        }
+                    }
+            };
         },
     }
 });
