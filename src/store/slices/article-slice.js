@@ -5,7 +5,6 @@ const articleSlice = createSlice({
     initialState: {
         articles: [],
         article: [],
-        numberOfArticles: 3,
     },
     reducers: {
         getArticles(state, action) {
@@ -20,28 +19,6 @@ const articleSlice = createSlice({
                 article: state.articles.find((article) => article.id 
                     == action.payload)
             }
-        },
-        setNumberOfArticles(state) {
-            switch(action.type) {
-                case 'increment':
-                    if ((state.numberOfArticles + 3) <= state.articles.length) {
-                        return {
-                            ...state,
-                            numberOfArticles: state.numberOfArticles + 3,
-                        };
-                    
-                    } else {
-                        return state;
-                    }
-
-                case 'decrement':
-                    if ((state.numberOfArticles) > 3) {
-                        return {
-                            ...state,
-                            numberOfArticles: state.numberOfArticles - 3,
-                        }
-                    }
-            };
         },
     }
 });
