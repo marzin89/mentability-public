@@ -1,11 +1,14 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import storage from 'redux-persist/lib/storage';
 import { persistReducer, persistStore } from 'redux-persist';
+import articleSlice from './slices/article-slice';
+import activitySlice from './slices/activity-slice';
+import quoteSlice from './slices/quote-slice';
 
 const rootReducer = combineReducers({
-    quote:    quoteSlice.reducer,
     article:  articleSlice.reducer,
     activity: activitySlice.reducer,
+    quote:    quoteSlice.reducer,
 });
 
 const persistConfig = {
