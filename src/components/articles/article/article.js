@@ -5,6 +5,11 @@ import { articleActions } from '../../../store/slices/article-slice';
 function Article(props) {
     const dispatch = useDispatch();
 
+    function handleLinkClick(e) {
+        dispatch(articleActions.getArticle(e.currentTarget.parentElement.id));
+        dispatch(articleActions.splitTextIntoParagraphs(props.article.content));
+    }
+
     return (
         <article key={props.article.id} id={props.article.id} 
             className={`news-article ${props.class}`}>
@@ -13,8 +18,7 @@ function Article(props) {
             <p>{props.article.content.slice(0, 150) + ' ...'}</p>
             <p className="author">{props.article.author}</p>
             <Link className="find-out-more" to="/article" onClick={(e) => 
-                dispatch(articleActions.getArticle(e.currentTarget.parentElement.id))}>
-                    Läs mer</Link>
+                handleLinkClick(e)}>Läs mer</Link>
         </article>
     );
 }
