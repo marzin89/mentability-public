@@ -1,4 +1,4 @@
-import Quote from '../../components/quotes/quote';
+import Quote from '../../components/quote/quote';
 import Articles from '../../components/articles/articles';
 import About from '../../components/about/about';
 import Activities from '../../components/activities/activities';

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import Quote from '../../components/quotes/quote';
+import Quote from '../../components/quote/quote';
 
 function Activity() {
     const activity = useSelector((state) => state.activity.activity);
