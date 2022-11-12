@@ -334,12 +334,10 @@ label {
 .error {
     font-weight: bold;
     color: #E12F2F;
-    display: none;
 }
 
 .confirm {
     font-weight: bold;
-    display: none;
 }
 
 .button:hover {
