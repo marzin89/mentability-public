@@ -20,7 +20,7 @@ function App() {
   const activities = useSelector((state) => state.activity.activities);
   const dispatch   = useDispatch();
 
-  if (!quotes) {
+  if (!quotes.length) {
     fetch('https://localhost:7076/api/Quote')
     .then(response => response.json())
     .then((data) => {
@@ -39,7 +39,7 @@ function App() {
     });
   }
 
-  if (!articles) {
+  if (!articles.length) {
     fetch('https://localhost:7076/api/NewsArticle')
     .then(response => response.json())
     .then((data) => {
@@ -47,7 +47,7 @@ function App() {
     });
   }
 
-  if (!activities) {
+  if (!activities.length) {
     fetch('https://localhost:7076/api/Activity')
     .then(response => response.json())
     .then((data) => {
