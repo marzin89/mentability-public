@@ -6,7 +6,6 @@ const quoteSlice = createSlice({
         quotes: [],
         content: '',
         author: '',
-        errorMessage: '',
     },
     reducers: {
         getQuotes(state, action) {
@@ -22,12 +21,6 @@ const quoteSlice = createSlice({
                 author: action.payload.author,
             };
         },
-        setErrorMessage(state, action) {
-            return {
-                ...state,
-                errorMessage: action.payload,
-            };
-        }
     }
 });
 
