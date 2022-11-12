@@ -5,6 +5,11 @@ import { activityActions } from '../../../store/slices/activity-slice';
 function Activity(props) {
     const dispatch = useDispatch();
 
+    function handleLinkClick(e) {
+        dispatch(activityActions.getActivity(e.currentTarget.parentElement.id));
+        dispatch(activityActions.splitTextIntoParagraphs(props.activity.content));
+    }
+
     return (
         <article key={props.activity.id} id={props.activity.id} 
             className={`activity ${props.class}`}>
@@ -18,8 +23,7 @@ function Activity(props) {
             <p className="date">{props.activity.startDate.slice(0, 10)}</p>}
             <p>{props.activity.content.slice(0, 150) + ' ...'}</p>
             <Link className="find-out-more" to="/activity"onClick={(e) => 
-                dispatch(activityActions.getActivity(e.currentTarget.parentElement.id))}>
-                    Läs mer</Link>
+                handleLinkClick(e)}>Läs mer</Link>
         </article>
     );
 }
