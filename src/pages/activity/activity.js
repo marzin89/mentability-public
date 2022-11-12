@@ -5,7 +5,6 @@ import Quote from '../../components/quotes/quote';
 function Activity() {
     const activity = useSelector((state) => state.activity.activity);
     const text = useSelector((state) => state.activity.text);
-    console.log(Array.isArray(text));
 
     useEffect(() => {
         document.title = activity.title;

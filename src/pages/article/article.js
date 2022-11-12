@@ -17,11 +17,11 @@ function Article() {
                 <h1>{article.title}</h1>
                 <div className="article">
                     <p className="date">{article.date.slice(0, 10)}</p>
-                    {text.map((paragraph) => {
+                    {Array.isArray(text) ? text.map((paragraph) => {
                         return (
                             <p>{paragraph}</p>
                         )
-                    })}
+                    }) : <p>{text}</p>}
                     <p className="author">{article.author}</p>
                 </div>
             </div>
