@@ -1,89 +1,38 @@
-// Importerar React och komponenten som genererar slumpmässiga citat
-import React from 'react';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import Quote from '../../components/quotes/quote';
 
-// Undersida aktiviteter
-class Activity extends React.Component {
-    // Konstruktor som hämtar och lagrar aktiviteten
-    constructor() {
-        super();
+function Activity() {
+    const activity = useSelector((state) => state.activity.activity);
+    const text = useSelector((state) => state.activity.text);
+    console.log(Array.isArray(text));
 
-        this.setState = this.setState.bind(this);
-        this.renderContentMultipleParagraphs = this.renderContentMultipleParagraphs.bind(this);
+    useEffect(() => {
+        document.title = activity.title;
+    })
 
-        this.state = {
-            title: '',
-            startDate: '',
-            endDate: '',
-            imgUrl: '',
-            content: '',
-        }
-
-        this.getActivity();
-    }
-
-    // Rendering
-    render() {
-        return (
-            <main className="main-subpage">
-                {/* Slumpmässigt genererat citat */}
-                <Quote />
-                <div className="gray-section">
-                    {/* Aktivitet */}
-                    <h1>{this.state.title}</h1>
-                    <div className="article">
-                        {this.state.endDate ? 
-                        <div>
-                            <p className="date">{this.state.startDate.slice(0, 10) + ' –'}</p>
-                            <p className="date">{this.state.endDate.slice(0, 10)}</p>
-                        </div> 
-                        : 
-                        <p className="date">{this.state.startDate.slice(0, 10)}</p>}
-                        {/* Om innehållet består av flera stycken, körs funktionen som renderar innehållet som 
-                            en array med stycken. Annars skrivs innehållet ut rakt av. */}
-                        {this.state.content.indexOf('\r\n\r\n') > 0 ? this.renderContentMultipleParagraphs()
-                        : <p>{this.state.content}</p>}
-                    </div>
+    return (
+        <main className="main-subpage">
+            <Quote />
+            <div className="gray-section">
+                <h1>{activity.title}</h1>
+                <div className="article">
+                    {activity.endDate ? 
+                    <div>
+                        <p className="date">{activity.startDate.slice(0, 10) + ' –'}</p>
+                        <p className="date">{activity.endDate.slice(0, 10)}</p>
+                    </div> 
+                    : 
+                    <p className="date">{activity.startDate.slice(0, 10)}</p>}
+                    {Array.isArray(text) ? text.map((paragraph) => {
+                        return (
+                            <p>{paragraph}</p>
+                        );
+                    }) : <p>{text}</p>}
                 </div>
-            </main>
-        )
-    }
-
-    /* Funktionen hämtar aktiviteten, ändrar sidans namn 
-        och lagrar aktiviteten i state */
-    getActivity() {
-        const id = localStorage.getItem('activityId');
-
-        fetch(`https://localhost:7076/api/Activity/${id}`)
-        .then(response => response.json())
-        .then((data) => {
-            document.title = data.title;
-
-            this.setState({
-                title:     data.title,
-                startDate: data.startDate,
-                endDate:   data.endDate,
-                content:   data.content,
-                imgUrl:    data.imageUrl,
-            })
-        })
-    }
-
-    /* Funktionen delar upp textinnehåll med flera stycken i en array
-        och returnerar den */
-    renderContentMultipleParagraphs() {
-        let content = this.state.content.split('\r\n\r\n');
-        let render  = [];
-
-        content.map((paragraph) => {
-            render.push(
-                <p>{paragraph}</p>
-            )
-        })
-
-        return render;
-    }
+            </div>
+        </main>
+    );
 }
 
-// Exporterar komponenten
 export default Activity;
