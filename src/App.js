@@ -31,12 +31,6 @@ function App() {
         dispatch(quoteActions.getQuotes(data));
         dispatch(quoteActions.setRandomQuote(data[random]));
     })
-    .catch(() => {
-      dispatch(quoteActions.setErrorMessage(
-        'Ett serverfel har uppstått.' + 
-        ' Innehållet kan inte visas för tillfället. Försök igen lite senare.'
-      ));
-    });
   }
 
   if (!articles.length) {
