@@ -5,6 +5,7 @@ const activitySlice = createSlice({
     initialState: {
         activities: [],
         activity: [],
+        text: [],
     },
     reducers: {
         getActivities(state, action) {
@@ -17,8 +18,22 @@ const activitySlice = createSlice({
             return {
                 ...state,
                 activity: state.activities.find((activity) => activity.id
-                    == action.payload)
+                    == action.payload),
             };
+        },
+        splitTextIntoParagraphs(state, action) {
+            if (action.payload.includes('\r\n\r\n')) {
+                return {
+                    ...state,
+                    text: action.payload.split('\r\n\r\n'),
+                };
+            
+            } else {
+                return {
+                    ...state,
+                    text: action.payload,
+                };
+            }
         },
     }
 });
