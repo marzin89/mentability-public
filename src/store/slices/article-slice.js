@@ -5,6 +5,7 @@ const articleSlice = createSlice({
     initialState: {
         articles: [],
         article: [],
+        text: [],
     },
     reducers: {
         getArticles(state, action) {
@@ -17,7 +18,21 @@ const articleSlice = createSlice({
             return {
                 ...state,
                 article: state.articles.find((article) => article.id 
-                    == action.payload)
+                    == action.payload),
+            };
+        },
+        splitTextIntoParagraphs(state, action) {
+            if (action.payload.includes('\r\n\r\n')) {
+                return {
+                    ...state,
+                    text: action.payload.split('\r\n\r\n'),
+                };
+            
+            } else {
+                return {
+                    ...state,
+                    text: action.payload,
+                };
             }
         },
     }
