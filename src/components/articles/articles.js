@@ -1,5 +1,5 @@
 import Article from './article/article';
-import ShowMoreBtn from './buttons/show-more-btn';
+import ShowMoreBtn from './show-more-btn/show-more-btn';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 

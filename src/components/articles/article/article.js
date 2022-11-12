@@ -12,12 +12,11 @@ function Article(props) {
             <p className="date">{props.article.date.slice(0, 10)}</p>
             <p>{props.article.content.slice(0, 150) + ' ...'}</p>
             <p className="author">{props.article.author}</p>
-            <Link id={`article${props.article.id}`} className="find-out-more" 
-                to="/article" onClick={(e) => dispatch(articleActions.getArticle(
-                    e.currentTarget.parentElement.id))}>Läs mer</Link>
+            <Link className="find-out-more" to="/article" onClick={(e) => 
+                dispatch(articleActions.getArticle(e.currentTarget.parentElement.id))}>
+                    Läs mer</Link>
         </article>
-
-    )
+    );
 }
 
 export default Article;
